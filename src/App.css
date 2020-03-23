@@ -4,6 +4,8 @@
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --orange-color: #f0a951;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
 }
 
 * {
@@ -159,6 +161,14 @@ img {
   border-radius: 20px;
 }
 
+.alert {
+  padding: 0.8rem;
+  margin: 1rem 0;
+  opacity: 0.9;
+  background: var(--light-color);
+  color: #333;
+}
+
 .btn-primary,
 .bg-primary {
   background: var(--primary-color);
@@ -179,6 +189,14 @@ img {
 .btn-dark,
 .bg-dark {
   background: var(--dark-color);
+  color: #fff;
+}
+
+.btn-danger,
+.bg-danger,
+.badge-danger,
+.alert-danger {
+  background: var(--danger-color);
   color: #fff;
 }
 
