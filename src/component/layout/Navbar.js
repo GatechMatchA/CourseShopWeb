@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const Navbar = props => {
   return (
-    <nav class='navbar bg-orange'>
+    <nav className='navbar bg-orange'>
       <h1>
         <Link to='/'>
-          <i class='fas fa-graduation-cap'></i> CourseShop
+          <i className='fas fa-graduation-cap'></i> CourseShop
         </Link>
       </h1>
 
