@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { login } from '../../actions/auth';
+import { connect } from 'react-redux';
 
-const Login = () => {
+const Login = ({ login }) => {
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -13,8 +15,9 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   // use axios to send data
-  const onSubmit = async e => {
+  const onSubmit = e => {
     e.preventDefault();
+    login({ username, password });
   };
   return (
     <Fragment>
@@ -40,7 +43,6 @@ const Login = () => {
             name='password'
             value={password}
             onChange={e => onChange(e)}
-            minLength='6'
           />
         </div>
 
@@ -53,6 +55,6 @@ const Login = () => {
   );
 };
 
-Login.propTypes = {};
+Login.propTypes = { login: PropTypes.func.isRequired };
 
-export default Login;
+export default connect(null, { login })(Login);

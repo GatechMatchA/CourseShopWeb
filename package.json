@@ -40,5 +40,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://courseshop-gatech.herokuapp.com/api"
+  "proxy": "https://courseshop-gatech.herokuapp.com"
 }
