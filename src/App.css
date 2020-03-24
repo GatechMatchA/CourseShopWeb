@@ -192,6 +192,14 @@ img {
   color: #fff;
 }
 
+.btn-success,
+.bg-success,
+.badge-success,
+.alert-success {
+  background: var(--success-color);
+  color: #fff;
+}
+
 .btn-danger,
 .bg-danger,
 .badge-danger,
