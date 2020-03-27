@@ -3,16 +3,25 @@ import {
   COURSE_ERROR,
   SEARCH_COURSES,
   SELECT_COURSE,
-  UNSELECT_COURSE
+  UNSELECT_COURSE,
+  CLEAN_COURSE,
+  GET_COURSE,
+  SET_COURSE,
+  SELECT_SECTION
 } from '../actions/types';
 
 const initialState = {
   courses: [],
-  course: null, //single post
+  course: null, //single
   loading: true,
   error: {},
   selectedCourses: [],
-  selectedCourseNum: 0
+  currentCourse: null,
+  professors: [],
+  professor: '',
+  sections: [],
+  section: null,
+  selectedSections: []
 };
 
 export default function(state = initialState, action) {
@@ -40,26 +49,61 @@ export default function(state = initialState, action) {
         loading: false
       };
 
+    case CLEAN_COURSE:
+      return {
+        ...state,
+        // selectedCourses: [
+        //   ...new Set([payload.course, ...state.selectedCourses])
+        // ],
+        selectedCourses: state.selectedCourses.filter(
+          course => course.id !== payload.id
+        ),
+        // selectedCourseNum: { ...(state.selectedCourseNum + 1) },
+        // selectedCourseNum: state.selectedCourseNum + 1,
+        loading: false
+      };
+
     case SELECT_COURSE:
       return {
         ...state,
         selectedCourses: [payload, ...state.selectedCourses],
-        // selectedCourseNum: { ...(state.selectedCourseNum + 1) },
-        selectedCourseNum: state.selectedCourseNum + 1,
         loading: false
       };
 
     case UNSELECT_COURSE:
       return {
         ...state,
-        // selectedCourses: [payload, ...state.selectedCourses],
         selectedCourses: state.selectedCourses.filter(
-          course => course._id !== payload._id
+          course => course.id !== payload.id
         ),
-
-        // selectedCourseNum: { ...(state.selectedCourseNum + 1) },
-        selectedCourseNum: state.selectedCourseNum - 1,
         loading: false
+      };
+
+    case GET_COURSE:
+      return {
+        ...state,
+        selectedCourse: payload,
+        loading: false
+      };
+
+    // case REPLACE_PROF:
+    //     return {
+    //         ...state,
+    //         selectedCourse: { ...state.selectedCourse, professors: payload },
+    //         professors: payload,
+    //         loading: false
+    //     };
+
+    case SET_COURSE:
+      return {
+        ...state,
+        currentCourse: payload
+      };
+
+    case SELECT_SECTION:
+      return {
+        ...state,
+        currentCourse: payload
       };
 
     default:

@@ -8,18 +8,16 @@ import { Link } from 'react-router-dom';
 
 const Courses = ({
   getCourses,
-  searchCourses,
   course: { courses, loading, selectedCourseNum, selectedCourses }
 }) => {
   const [searchText, setsearchText] = useState('');
-  const [comparisonNum, setcomparisonNum] = useState(0);
 
   useEffect(() => {
     getCourses(searchText);
   }, [searchText]);
 
   const onChange = e => setsearchText(e.target.value);
-  //   console.log(selectedCourses);
+
   return loading ? (
     <Spinner />
   ) : (
@@ -54,19 +52,12 @@ const Courses = ({
       </div>
       <div className='btnContainer'>
         <Link to='/coursecomparison' className='btn btn-orange'>
-          Go to course comparison page {selectedCourseNum}
+          Go to course comparison page {selectedCourses.length}
         </Link>
-        {/* <p>{selectedCourses}</p> */}
       </div>
       <div className='courses'>
         {courses.map(course => (
-          //   <li onClick={() => setcomparisonNum(comparisonNum + 1)}>
-          <CourseItem
-            key={course._id}
-            course={course}
-            // onClick={() => setcomparisonNum(comparisonNum + 1)}
-          />
-          //   </li>
+          <CourseItem key={course._id} courseItem={course} />
         ))}
       </div>
     </Fragment>

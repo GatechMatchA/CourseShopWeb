@@ -8,6 +8,8 @@ import Register from './component/auth/Register';
 import Login from './component/auth/Login';
 import Alert from './component/layout/Alert';
 import Courses from './component/courses/Courses';
+import CourseComparison from './component/coursecomparison/CourseComparison';
+import Course from './component/course/Course';
 
 //import Redux surrond the whole app with Provider
 import { Provider } from 'react-redux';
@@ -25,6 +27,12 @@ const App = () => (
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/courses' component={Courses} />
+            <Route
+              exact
+              path='/coursecomparison'
+              component={CourseComparison}
+            />
+            <Route exact path='/courses/:id' component={Course} />
           </Switch>
         </section>
       </Fragment>

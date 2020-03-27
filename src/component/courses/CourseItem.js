@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { selectCourse, unselectCourse } from '../../actions/course';
@@ -18,13 +18,18 @@ const CourseItem = ({
   //     prerequisites,
   //     dependents
   //   },
-  course,
+  courseItem,
   selectCourse,
-  unselectCourse
+  unselectCourse,
+  course: { selectedCourses }
 }) => {
   const [side, setSide] = useState(true);
-  const [isSelected, setisSelected] = useState(false);
+  //check if selected
+  const [isSelected, setisSelected] = useState(
+    selectedCourses.some(course => course.id === courseItem.id) ? true : false
+  );
 
+  //   console.log(courseItem);
   const onClick = e => {
     setSide(!side);
   };
@@ -40,8 +45,8 @@ const CourseItem = ({
               border: isSelected ? '#90DDD0' : 'white'
             }}
           >
-            <h2>{course.code}</h2> <h2>{course.title}</h2>{' '}
-            <h4>{course.creditHour} Credits</h4>
+            <h2>{courseItem.code}</h2> <h2>{courseItem.title}</h2>{' '}
+            <h4>{courseItem.creditHour} Credits</h4>
             <button className='btn btn-orange' onClick={onClick}>
               flip
             </button>
@@ -49,9 +54,24 @@ const CourseItem = ({
               className='btn btn-orange'
               onClick={e => {
                 e.preventDefault();
-
                 setisSelected(!isSelected);
-                isSelected ? unselectCourse(course) : selectCourse({ course });
+                // if (
+                //   selectedCourses.some(course => course._id === courseItem._id)
+                // )
+                isSelected
+                  ? unselectCourse(courseItem)
+                  : selectCourse(courseItem);
+                // if (isSelected) {
+                //   unselectCourse(courseItem);
+                // } else {
+                //   if (
+                //     !selectedCourses.some(
+                //       course => course._id === courseItem._id
+                //     )
+                //   ) {
+                //     selectCourse({ courseItem });
+                //   }
+                // }
               }}
             >
               Add to comparison
@@ -62,14 +82,14 @@ const CourseItem = ({
         {!side && (
           <div className='flip-card-back'>
             <h4>
-              {course.code} {course.title}
+              {courseItem.code} {courseItem.title}
             </h4>
-            <p>{course.creditHour} Credits</p>
-            <p>Description: {course.description}</p>
-            <p>Restrictions: {course.restrictions}</p>
+            <p>{courseItem.creditHour} Credits</p>
+            <p>Description: {courseItem.description}</p>
+            <p>Restrictions: {courseItem.restrictions}</p>
             <p>
               Prerequisites:{' '}
-              {course.prerequisites.map(prerequisite => (
+              {courseItem.prerequisites.map(prerequisite => (
                 <p> {prerequisite.code}</p>
               ))}
             </p>
@@ -84,11 +104,16 @@ const CourseItem = ({
 };
 
 CourseItem.propTypes = {
-  course: PropTypes.object.isRequired,
-  selectCourse: PropTypes.func.isRequired
+  courseItem: PropTypes.object.isRequired,
+  selectCourse: PropTypes.func.isRequired,
+  course: PropTypes.object.isRequired
 };
 
-export default connect(null, {
+const mapStateToProps = state => ({
+  course: state.course
+});
+
+export default connect(mapStateToProps, {
   selectCourse,
   unselectCourse
 })(CourseItem);
