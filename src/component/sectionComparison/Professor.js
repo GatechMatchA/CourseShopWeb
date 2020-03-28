@@ -2,17 +2,15 @@ import React, { Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import { mapProfessor } from '../../actions/course';
+import { setProf } from '../../actions/professor';
 import Section from './Section';
 
-const Professor = ({ professor: { professors } }) => {
-  //   console.log('professor', professors.sections);
-
+const Professor = ({ courseId, professor: { professors }, setProf, match }) => {
   return (
     <Fragment>
       {professors.length > 0 &&
         professors
-          .sort((a, b) => a.lastName - b.lastName)
+          .sort((a, b) => a.name.lastName.localeCompare(b.name.lastName))
           .map(professor => (
             <div className='professor'>
               <div className='profName'>
@@ -37,7 +35,15 @@ const Professor = ({ professor: { professors } }) => {
               </div>
 
               <div className='profDetailBtn'>
-                <button className='btn btn-primary'>Details</button>
+                <Link
+                  to={`/courses/${courseId}/professors/${professor.professor}`}
+                  className='btn btn-primary'
+                  onClick={e => {
+                    setProf(professor);
+                  }}
+                >
+                  Details
+                </Link>
               </div>
 
               <Section professor={professor} />
@@ -78,4 +84,4 @@ const mapStateToProps = state => ({
   professor: state.professor
 });
 
-export default connect(mapStateToProps, {})(Professor);
+export default connect(mapStateToProps, { setProf })(Professor);

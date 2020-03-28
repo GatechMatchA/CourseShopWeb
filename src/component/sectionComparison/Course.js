@@ -8,11 +8,8 @@ import { getCourse } from '../../actions/course';
 import { getProfessors } from '../../actions/professor';
 
 import Professor from './Professor';
-import { getSections } from '../../actions/section';
 
 const Course = ({
-  getCourse,
-  //   course: { selectedCourse, loading },
   match,
   getProfessors,
   professor: { professors, loading }
@@ -33,7 +30,7 @@ const Course = ({
       <p className='lead'>
         <i className='fas fa-book' /> Compare this course's sections
       </p>
-      <Professor />
+      <Professor courseId={match.params.id} />
       {/* <div className='courseComparison'>
         {professors.length > 0 &&
           professors.map(professor => <li> {professor.name.lastName}</li>)}

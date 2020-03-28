@@ -709,6 +709,101 @@ button {
   grid-column: 1;
   grid-row: 1;
 }
+
+.profStatsChart {
+  width: 90%;
+  /* display: flex; */
+  /* flex-direction: row; */
+  display: grid;
+  grid-row-gap: 50px;
+  padding: 20px;
+  grid-gap: 2rem;
+  align-items: center;
+  color: var(--primary-color);
+  border-radius: 20px;
+  border: 2px solid var(--primary-color);
+  grid-template-columns: repeat(4, [col] 20%);
+  grid-template-rows: [row];
+}
+
+.profGrade {
+  background-color: #fff;
+  align-items: center;
+  justify-items: center;
+  /* width: 80%; */
+  /* height: 100%; border: 1px solid var(--green-color); */
+  padding: 10px;
+  font-size: 15px;
+  text-align: center;
+  margin-left: 1rem;
+  grid-column: 1/2;
+  grid-row: 1;
+}
+
+.profEas {
+  background-color: #bfd7ea;
+  height: 60%;
+  /* border: 1px solid var(--green-color); */
+  padding: 20px;
+  font-size: 30px;
+  /* border-radius: 20px 0 0 20px; */
+  text-align: center;
+  margin-left: 0.5rem;
+  align-items: center;
+  justify-items: center;
+
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.profQua {
+  background-color: #bfd7ea;
+  height: 60%;
+  /* border: 1px solid var(--green-color); */
+  padding: 20px;
+  font-size: 30px;
+  /* border-radius: 20px 0 0 20px; */
+  text-align: center;
+  margin-left: 0.5rem;
+  align-items: center;
+  justify-items: center;
+
+  grid-column: 4;
+  grid-row: 1;
+}
+
+/* Reviews  */
+.review {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 2rem;
+  align-items: center;
+  color: var(--dark-color);
+}
+
+.review > div:first-child {
+  text-align: center;
+}
+
+.review .img {
+  width: 50 px;
+  /* background-image: url('./img/default-avatar.png'); */
+}
+
+.review .comment-count {
+  background: var(--light-color);
+  color: var(--primary-color);
+  padding: 0.1rem 0.2rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+.review .review-date {
+  color: #aaa;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
 /* Test Grid */
 /* https://gridbyexample.com/examples/example21/ */
 .wrapper {

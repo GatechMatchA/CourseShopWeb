@@ -9,7 +9,8 @@ import {
   CLEAN_COURSE,
   SELECT_SECTION,
   GET_COURSE,
-  SET_COURSE
+  SET_COMPARE_COURSE,
+  CLEAN_COMPARE_COURSE
 } from './types';
 
 // Get all courses
@@ -113,7 +114,7 @@ export const getCourse = courseId => async dispatch => {
 //Set current selected course
 export const setCourse = course => async dispatch => {
   dispatch({
-    type: SET_COURSE,
+    type: SET_COMPARE_COURSE,
     payload: course
   });
 };
@@ -127,79 +128,10 @@ export const selectSection = (course, section) => async dispatch => {
   });
 };
 
-// Get single course
-// export const getProfessors = courseId => async dispatch => {
-//   try {
-//     const res = await axios.get(`/api/courses/${courseId}`);
-
-//     dispatch({
-//       type: GET_COURSE,
-//       payload: res.data.payload
-//     });
-//   } catch (err) {
-//     dispatch(setAlert(err.response.statusText, 'danger'));
-
-//     dispatch({
-//       type: COURSE_ERROR,
-//       payload: { msg: err.response.statusText, status: err.response.status }
-//     });
-//   }
-// };
-
-// Get professor details
-// export const getProfessorDetail = professorId => async dispatch => {
-//   try {
-//     const res = await axios.get(`/api/professors/${professorId}`);
-//     console.log(res.data);
-//     dispatch({
-//       type: GET_PROF,
-//       payload: res.data.payload
-//     });
-//     // return res.data.payload;
-//   } catch (err) {
-//     dispatch(setAlert(err.response.statusText, 'danger'));
-
-//     dispatch({
-//       type: COURSE_ERROR,
-//       payload: { msg: err.response.statusText, status: err.response.status }
-//     });
-//   }
-// };
-
-// // Get all professor details
-// export const mapProfessor = professors => async dispatch => {
-//     console.log('new' + professors);
-
-//     try {
-//         var newProfessor = [];
-//         let count = 0;
-//         professors.forEach(async professorId => {
-//             count++;
-//             const res = await axios.get(`/api/professors/${professorId}`);
-//             newProfessor.push(res.data.payload);
-//             console.log('Bob count ', count);
-//             if (count === professors.length) {
-//                 dispatch({
-//                     type: REPLACE_PROF,
-//                     payload: newProfessor
-//                 });
-//             }
-//         });
-
-//         // for (professorId in professors) {
-//         //   //   console.log(professorId);
-//         //   const res = await axios.get(`/api/professors/${professorId}`);
-//         //   //   console.log(res.data.payload);
-//         //   await newProfessor.push(res.data.payload);
-//         // }
-//         // console.log(newProfessor);
-//     } catch (err) {
-//         // console.log('issue');
-//         dispatch(setAlert(err.response.statusText, 'danger'));
-
-//         dispatch({
-//             type: COURSE_ERROR,
-//             payload: { msg: err.response.statusText, status: err.response.status }
-//         });
-//     }
-// };
+//Clear current course for compare
+export const clearCourseCompare = () => async dispatch => {
+  dispatch({
+    type: CLEAN_COMPARE_COURSE,
+    payload: null
+  });
+};

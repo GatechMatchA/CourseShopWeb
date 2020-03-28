@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_PROFS } from './types';
+import { GET_PROFS, SET_PROF } from './types';
 
 // Get professors by courseId
 // use await in array https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop
@@ -14,7 +14,6 @@ export const getProfessors = courseId => async dispatch => {
       const res1 = await getProfDetails(prof);
       const res2 = await getSections(courseId, res1);
       // const res2 = await getBoth(prof, courseId)
-      console.log('res2', prof);
       newProfs.push(res2);
     }
 
@@ -78,6 +77,14 @@ export const getSections = async (courseId, prof) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+// Set current professor
+export const setProf = prof => async dispatch => {
+  dispatch({
+    type: SET_PROF,
+    payload: prof
+  });
 };
 
 // export const getProfessors = courseId => dispatch => {

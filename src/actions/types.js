@@ -13,9 +13,19 @@ export const UNSELECT_COURSE = 'UNSELECT_COURSE';
 export const CLEAN_COURSE = 'CLEAN_COURSE';
 export const GET_COURSE = 'GET_COURSE';
 export const GET_SECTIONS = 'GET_SECTIONS';
-export const GET_PROFS = 'GET_PROFS';
 export const REPLACE_PROF = 'REPLACE_PROF';
 export const GET_PROFDETAILS = 'GET_PROFDETAILS';
 export const UPDATE_PROFS = 'UPDATE_PROFS';
+
+export const SET_COMPARE_COURSE = 'SET_COMPARE_COURSE';
+export const CLEAN_COMPARE_COURSE = 'CLEAN_COMPARE_COURSE';
+
 export const SELECT_SECTION = 'SELECT_SECTION';
-export const SET_COURSE = 'SET_COURSE';
+
+export const GET_PROFS = 'GET_PROFS';
+export const SET_PROF = 'SET_PROF';
+
+export const GET_REVIEWS = 'GET_REVIEWS';
+
+export const UPVOTE = 'UPVOTE';
+export const DOWNVOTE = 'DOWNVOTE';

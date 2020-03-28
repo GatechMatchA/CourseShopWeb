@@ -4,13 +4,23 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { Link } from 'react-router-dom';
 import CourseCompItem from './CourseCompItem';
+import { clearCourseCompare } from '../../actions/course';
 
-const CourseComparison = ({ course: { loading, selectedCourses } }) => {
+const CourseComparison = ({
+  course: { loading, selectedCourses },
+  clearCourseCompare
+}) => {
   return loading ? (
     <Spinner />
   ) : (
     <Fragment>
-      <Link to='/courses' className='btn'>
+      <Link
+        to='/courses'
+        className='btn'
+        onClick={e => {
+          clearCourseCompare();
+        }}
+      >
         Back To All Courses
       </Link>
       <h1 className='large text-primary'>Course Comparison Page</h1>
@@ -28,14 +38,14 @@ const CourseComparison = ({ course: { loading, selectedCourses } }) => {
 };
 
 CourseComparison.propTypes = {
-  getCourses: PropTypes.func.isRequired,
-  course: PropTypes.object.isRequired,
-  selectedCourseNum: PropTypes.number.isRequired,
-  selectedCourses: PropTypes.func.isRequired
+  //   getCourses: PropTypes.func.isRequired,
+  //   course: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   course: state.course
 });
 
-export default connect(mapStateToProps, {})(CourseComparison);
+export default connect(mapStateToProps, { clearCourseCompare })(
+  CourseComparison
+);

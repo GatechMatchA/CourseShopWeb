@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { selectSection } from '../../actions/course';
-import ProfItem from './ProfItem';
 
-const Section = ({ professor, course: { currentCourse }, selectSection }) => {
+const Section = ({
+  professor,
+  course: { currentCourseCompare },
+  selectSection
+}) => {
   return (
     <Fragment>
       {professor.sections.length > 0 &&
@@ -41,7 +44,7 @@ const Section = ({ professor, course: { currentCourse }, selectSection }) => {
                           professor.name.firstName +
                           ' ' +
                           professor.name.lastName;
-                        selectSection(currentCourse, section);
+                        selectSection(currentCourseCompare, section);
                       }}
                     >
                       Add to cart

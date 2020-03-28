@@ -6,7 +6,7 @@ import { setCourse } from '../../actions/course';
 
 const CourseCompItem = ({
   courseItem,
-  course: { currentCourse },
+  course: { selectedCourses },
   setCourse,
   history
 }) => {
@@ -23,13 +23,21 @@ const CourseCompItem = ({
     </Link>
   );
 
-  //   const displaySection = (
-  //     <div className='courseSection'>{currentCourse.section.sectionCode}</div>
-  //   );
   const changeSection = (
-    <Link to={`/courses/${courseItem.id}`} className='btn lead'>
+    <Link
+      to={`/courses/${courseItem.id}`}
+      className='btn lead'
+      onClick={e => {
+        setCourse(courseItem);
+      }}
+    >
       Change section
     </Link>
+  );
+
+  // Get the updated course with selected section
+  const tempCourse = selectedCourses.find(
+    course => course.id === courseItem.id
   );
 
   return (
@@ -42,8 +50,40 @@ const CourseCompItem = ({
       <div className='divider' />
       {
         <div>
+          {tempCourse === null
+            ? addSection
+            : [
+                'section' in tempCourse ? (
+                  <div className='sectionDetail'>
+                    <h3>Professor {tempCourse.section.professorName}</h3>
+                    <table>
+                      <tr>
+                        <th>Section</th>
+                        <th>Day of Week</th>
+                        <th>Start</th>
+                        <th>End</th>
+                      </tr>
+                      <tr>
+                        <td>{tempCourse.section.sectionCode}</td>
+                        <td>
+                          {tempCourse.section.meetingTimes
+                            .sort((a, b) => a.dayOfWeek - b.dayOfWeek)
+                            .map(time => (
+                              <span> {time.dayOfWeek} </span>
+                            ))}
+                        </td>
+                        <td>{tempCourse.section.meetingTimes[0].startTime}</td>
+                        <td>{tempCourse.section.meetingTimes[0].endTime}</td>
+                        <td> {changeSection}</td>
+                      </tr>
+                    </table>
+                  </div>
+                ) : (
+                  addSection
+                )
+              ]}
           {/* {currentCourse.section === 0 ? addSection : displaySection} */}
-          {currentCourse === null
+          {/* {currentCourse === null
             ? addSection
             : [
                 'section' in currentCourse ? (
@@ -76,7 +116,7 @@ const CourseCompItem = ({
                 ) : (
                   addSection
                 )
-              ]}
+              ]} */}
         </div>
       }
     </div>

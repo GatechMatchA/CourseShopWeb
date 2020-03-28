@@ -7,9 +7,10 @@ import Landing from './component/layout/Landing';
 import Register from './component/auth/Register';
 import Login from './component/auth/Login';
 import Alert from './component/layout/Alert';
-import Courses from './component/courses/Courses';
-import CourseComparison from './component/coursecomparison/CourseComparison';
-import Course from './component/course/Course';
+import Courses from './component/courseSelection/Courses';
+import CourseComparison from './component/course/CourseComparison';
+import Course from './component/sectionComparison/Course';
+import Professor from './component/profdetail/Professor';
 
 //import Redux surrond the whole app with Provider
 import { Provider } from 'react-redux';
@@ -33,6 +34,11 @@ const App = () => (
               component={CourseComparison}
             />
             <Route exact path='/courses/:id' component={Course} />
+            <Route
+              exact
+              path='/courses/:id/professors/:profId'
+              component={Professor}
+            />
           </Switch>
         </section>
       </Fragment>
