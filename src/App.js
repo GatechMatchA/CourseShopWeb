@@ -11,6 +11,7 @@ import Courses from './component/courseSelection/Courses';
 import CourseComparison from './component/course/CourseComparison';
 import Course from './component/sectionComparison/Course';
 import Professor from './component/profdetail/Professor';
+import Review from './component/addReview/Review';
 
 //import Redux surrond the whole app with Provider
 import { Provider } from 'react-redux';
@@ -39,6 +40,8 @@ const App = () => (
               path='/courses/:id/professors/:profId'
               component={Professor}
             />
+
+            <Route exact path='/addreview' component={Review} />
           </Switch>
         </section>
       </Fragment>

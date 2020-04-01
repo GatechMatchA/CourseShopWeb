@@ -5,19 +5,6 @@ import { selectCourse, unselectCourse } from '../../actions/course';
 import { connect } from 'react-redux';
 
 const CourseItem = ({
-  //   course: {
-  //     _id,
-  //     code,
-  //     major,
-  //     title,
-  //     description,
-  //     creditHour,
-  //     restrictions,
-  //     professors,
-  //     sections,
-  //     prerequisites,
-  //     dependents
-  //   },
   courseItem,
   selectCourse,
   unselectCourse,
@@ -35,11 +22,11 @@ const CourseItem = ({
   };
 
   return (
-    <div className='flip-card'>
-      <div className='flip-card-inner'>
+    <div className='single-course'>
+      <div className='single-course-inner'>
         {side && (
           <div
-            className='flip-card-front'
+            className='single-course-front'
             style={{
               backgroundColor: isSelected ? '#90DDD0' : 'white',
               border: isSelected ? '#90DDD0' : 'white'
@@ -48,7 +35,7 @@ const CourseItem = ({
             <h2>{courseItem.code}</h2> <h2>{courseItem.title}</h2>{' '}
             <h4>{courseItem.creditHour} Credits</h4>
             <button className='btn btn-orange' onClick={onClick}>
-              flip
+              Details
             </button>
             <button
               className='btn btn-orange'
@@ -80,21 +67,24 @@ const CourseItem = ({
         )}
 
         {!side && (
-          <div className='flip-card-back'>
+          <div className='single-course-back'>
             <h4>
               {courseItem.code} {courseItem.title}
             </h4>
             <p>{courseItem.creditHour} Credits</p>
+
             <p>Description: {courseItem.description}</p>
             <p>Restrictions: {courseItem.restrictions}</p>
             <p>
               Prerequisites:{' '}
-              {courseItem.prerequisites.map(prerequisite => (
-                <p> {prerequisite.code}</p>
-              ))}
+              {courseItem.prerequisites.length > 0
+                ? courseItem.prerequisites.map(prerequisite => (
+                    <p> {prerequisite.code}</p>
+                  ))
+                : 'N/A'}
             </p>
             <button className='btn btn-orange' onClick={onClick}>
-              flip
+              back
             </button>
           </div>
         )}

@@ -11,6 +11,9 @@ const Navbar = ({ logout, auth: { isLoggedIn, loading } }) => {
         <Link to='/courses'>Course Selection</Link>
       </li>
       <li>
+        <Link to='/addreview'>Write reviews</Link>
+      </li>
+      <li>
         <Link to='/dashboard'>
           <i className='fas fa-user' />{' '}
           <span className='hide-sm'>Dashboard</span>

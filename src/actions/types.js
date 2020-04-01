@@ -26,6 +26,9 @@ export const GET_PROFS = 'GET_PROFS';
 export const SET_PROF = 'SET_PROF';
 
 export const GET_REVIEWS = 'GET_REVIEWS';
-
 export const UPVOTE = 'UPVOTE';
 export const DOWNVOTE = 'DOWNVOTE';
+export const ADD_REVIEW = 'ADD_REVIEW';
+export const REVIEW_ERROR = 'REVIEW_ERROR';
+export const GET_REVIEW_COURSES = 'GET_REVIEW_COURSES';
+export const GET_REVIEW_PROFS = 'GET_REVIEW_PROFS';
