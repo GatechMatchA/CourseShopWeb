@@ -13,10 +13,12 @@ import {
   CLEAN_COMPARE_COURSE
 } from './types';
 
+import API from './API';
+
 // Get all courses
 export const getCourses = searchText => async dispatch => {
   try {
-    const res = await axios.get('/api/courses?&orderBy=code');
+    const res = await API.get('/api/courses?&orderBy=code');
 
     if (searchText === '') {
       await dispatch({
@@ -40,7 +42,7 @@ export const getCourses = searchText => async dispatch => {
     }
   } catch (err) {
     dispatch(setAlert(err.response.statusText, 'danger'));
-
+    console.log(err.response);
     dispatch({
       type: COURSE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
@@ -51,7 +53,7 @@ export const getCourses = searchText => async dispatch => {
 // Search courses using course code
 export const searchCourses = searchText => async dispatch => {
   try {
-    const res = await axios.get('/api/courses?&orderBy=code');
+    const res = await API.get('/api/courses?&orderBy=code');
     searchText = searchText.toUpperCase();
 
     const courses = res.data.payload.filter(course =>
@@ -94,7 +96,7 @@ export const unselectCourse = course => async dispatch => {
 // Get single course
 export const getCourse = courseId => async dispatch => {
   try {
-    const res = await axios.get(`/api/courses/${courseId}`);
+    const res = await API.get(`/api/courses/${courseId}`);
     // console.log(res.data.payload.id);
     dispatch({
       type: GET_COURSE,

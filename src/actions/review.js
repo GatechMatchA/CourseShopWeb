@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 import { GET_REVIEWS, DOWNVOTE, UPVOTE } from './types';
+import API from './API';
 
 // Get reviews by course and professor
 export const getReviews = (courseId, profId) => async dispatch => {
   try {
-    const res = await axios.get(
+    const res = await API.get(
       `/api/reviews?course=${courseId}&professor=${profId}`
     );
 

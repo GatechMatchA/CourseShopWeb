@@ -7,6 +7,7 @@ import {
   LOGIN_FAIL,
   LOGOUT
 } from './types';
+import API from './API';
 
 // Register User
 export const register = ({ username, password }) => async dispatch => {
@@ -23,7 +24,7 @@ export const register = ({ username, password }) => async dispatch => {
   );
 
   try {
-    await axios.post('/api/account/signup', body, config);
+    await API.post('/api/account/signup', body, config);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -56,7 +57,7 @@ export const login = ({ username, password }) => async dispatch => {
   );
 
   try {
-    await axios.post('/api/account/login', body, config);
+    await API.post('/api/account/login', body, config);
 
     dispatch({
       type: LOGIN_SUCCESS,

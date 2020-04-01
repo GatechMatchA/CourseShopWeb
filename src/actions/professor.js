@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 import { GET_PROFS, SET_PROF } from './types';
+import API from './API';
 
 // Get professors by courseId
 // use await in array https://stackoverflow.com/questions/37576685/using-async-await-with-a-foreach-loop
 export const getProfessors = courseId => async dispatch => {
   try {
-    const res = await axios.get(`/api/courses/${courseId}/professors`);
+    const res = await API.get(`/api/courses/${courseId}/professors`);
     const profs = res.data.payload;
     const newProfs = [];
 
@@ -41,9 +42,9 @@ export const getProfessors = courseId => async dispatch => {
 // Get professor details
 export const getBoth = async (prof, courseId) => {
   try {
-    const res1 = await axios.get(`/api/professors/${prof.professor}`);
+    const res1 = await API.get(`/api/professors/${prof.professor}`);
     prof.name = res1.data.payload;
-    const res2 = await axios.get(
+    const res2 = await API.get(
       `/api/sections?course=${courseId}&professor=${prof.professor}`
     );
 
@@ -57,7 +58,7 @@ export const getBoth = async (prof, courseId) => {
 // Get professor details
 export const getProfDetails = async prof => {
   try {
-    const res = await axios.get(`/api/professors/${prof.professor}`);
+    const res = await API.get(`/api/professors/${prof.professor}`);
     prof.name = res.data.payload;
     return prof;
   } catch (error) {
@@ -69,7 +70,7 @@ export const getProfDetails = async prof => {
 export const getSections = async (courseId, prof) => {
   // console.log('getsection', courseId, prof);
   try {
-    const res = await axios.get(
+    const res = await API.get(
       `/api/sections?course=${courseId}&professor=${prof.professor}`
     );
     prof.sections = res.data.payload;
