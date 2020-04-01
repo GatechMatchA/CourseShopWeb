@@ -7,7 +7,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  username: localStorage.getItem('username'), //token of state
+  token: localStorage.getItem('token'), //token of state
   //   isAuthenticated: null,
   isLoggedIn: null,
   loading: true,
@@ -20,7 +20,7 @@ export default function(state = initialState, action) {
   switch (type) {
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
-      localStorage.setItem('username', payload.username);
+      localStorage.setItem('token', payload.token);
       return {
         ...state,
         ...payload,
@@ -31,11 +31,11 @@ export default function(state = initialState, action) {
     case REGISTER_FAIL:
     case LOGIN_FAIL:
     case LOGOUT:
-      localStorage.removeItem('username');
+      localStorage.removeItem('token');
 
       return {
         ...state,
-        username: null,
+        token: null,
         isLoggedIn: false,
         loading: false,
         user: null

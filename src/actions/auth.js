@@ -18,12 +18,16 @@ export const register = ({ username, password }) => async dispatch => {
 
   const body = JSON.stringify({ username, password });
 
+  const token = Buffer.from(`${username}:${password}`, 'utf8').toString(
+    'base64'
+  );
+
   try {
     await axios.post('/api/account/signup', body, config);
 
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: { username }
+      payload: { token }
     });
 
     dispatch(setAlert('Register Successfully', 'success'));
@@ -47,13 +51,19 @@ export const login = ({ username, password }) => async dispatch => {
 
   const body = JSON.stringify({ username, password });
 
+  const token = Buffer.from(`${username}:${password}`, 'utf8').toString(
+    'base64'
+  );
+
   try {
     await axios.post('/api/account/login', body, config);
 
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: { username }
+      payload: { token }
     });
+
+    dispatch(setAlert('Login Successfully', 'success'));
   } catch (err) {
     const error = err.response.data.error;
     dispatch(setAlert(error.message, 'danger'));
