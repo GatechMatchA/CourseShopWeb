@@ -14,6 +14,8 @@ export const getProfessors = courseId => async dispatch => {
     for (const prof of profs) {
       const res1 = await getProfDetails(prof);
       const res2 = await getSections(courseId, res1);
+      res2.averageQuality = (res2.averageQuality * 5).toFixed(2);
+      res2.averageEasiness = (res2.averageEasiness * 5).toFixed(2);
       // const res2 = await getBoth(prof, courseId)
       newProfs.push(res2);
     }

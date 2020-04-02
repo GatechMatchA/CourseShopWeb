@@ -34,7 +34,7 @@ const CourseItem = ({
           >
             <h2>{courseItem.code}</h2> <h2>{courseItem.title}</h2>{' '}
             <h4>{courseItem.creditHour} Credits</h4>
-            <button className='btn btn-orange' onClick={onClick}>
+            <button className='btn btn-orange ' onClick={onClick}>
               Details
             </button>
             <button
@@ -42,23 +42,10 @@ const CourseItem = ({
               onClick={e => {
                 e.preventDefault();
                 setisSelected(!isSelected);
-                // if (
-                //   selectedCourses.some(course => course._id === courseItem._id)
-                // )
+
                 isSelected
                   ? unselectCourse(courseItem)
                   : selectCourse(courseItem);
-                // if (isSelected) {
-                //   unselectCourse(courseItem);
-                // } else {
-                //   if (
-                //     !selectedCourses.some(
-                //       course => course._id === courseItem._id
-                //     )
-                //   ) {
-                //     selectCourse({ courseItem });
-                //   }
-                // }
               }}
             >
               Add to comparison
@@ -79,7 +66,7 @@ const CourseItem = ({
               Prerequisites:{' '}
               {courseItem.prerequisites.length > 0
                 ? courseItem.prerequisites.map(prerequisite => (
-                    <p> {prerequisite.code}</p>
+                    <span> {prerequisite.code} </span>
                   ))
                 : 'N/A'}
             </p>

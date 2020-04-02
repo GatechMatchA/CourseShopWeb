@@ -35,12 +35,12 @@ const Course = ({
           <h4>Grade Distribution</h4>
           <XYPlot height={300} width={300} xType='ordinal'>
             <VerticalBarSeries
-              data={Object.entries(currentprof.gradeDistribution).map(
-                ([k, v]) => ({
+              data={Object.entries(currentprof.gradeDistribution)
+                .sort((a, b) => a[0].localeCompare(b[0]))
+                .map(([k, v]) => ({
                   x: k,
                   y: v
-                })
-              )}
+                }))}
             />
             <XAxis />
             <YAxis left={5} />

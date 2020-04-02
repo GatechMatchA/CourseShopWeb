@@ -166,7 +166,7 @@ p.thicker {
   display: inline-block;
   background: var(--light-color);
   color: #333;
-  padding: 0.6rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   font-size: 1rem;
   border: none;
   cursor: pointer;
@@ -548,7 +548,6 @@ button {
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  border-radius: 20px;
 }
 
 .single-course-front {
@@ -563,16 +562,29 @@ button {
   font-size: small;
 }
 
+.single-course-front button {
+  align-items: center;
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 70%;
+  margin-top: -15px;
+}
+
 .single-course-back {
   background-color: white;
   color: var(--green-color);
-  /* transform: rotateY(180deg); */
   font-size: medium;
-  margin: 10px;
-  /* margin-top: 10px; */
+  margin-left: 5%;
+  margin-right: 5%;
+  /* margin-bottom: 5%; */
+  width: 90%;
   overflow: auto;
   text-align: left;
   align-items: center;
+}
+
+.single-course-back h3 {
+  text-align: center;
 }
 
 .single-course-back p {
@@ -581,7 +593,9 @@ button {
 
 .single-course-back button {
   align-items: center;
-  width: 80%;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .btnContainer {
@@ -623,8 +637,11 @@ button {
   background-color: #fff;
   /* border: 1px solid var(--green-color); */
   padding: 20px;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
 }
 
 /* Section Comparison Page */
@@ -713,6 +730,7 @@ button {
 
   display: grid;
   grid-column: col / span 5;
+  width: 100%;
   /* grid-column: col / span 4;
   grid-row: row 3; */
 }

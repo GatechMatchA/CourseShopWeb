@@ -31,10 +31,6 @@ const Course = ({
         <i className='fas fa-book' /> Compare this course's sections
       </p>
       <Professor courseId={match.params.id} />
-      {/* <div className='courseComparison'>
-        {professors.length > 0 &&
-          professors.map(professor => <li> {professor.name.lastName}</li>)}
-      </div> */}
     </Fragment>
   );
 };

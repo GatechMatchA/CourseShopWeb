@@ -74,12 +74,6 @@ Professor.propTypes = {
   //   course: PropTypes.object.isRequired
 };
 
-// const mapStateToProps = state => {
-//   console.log(state);
-//   return {
-//     course: state.course
-//   };
-// };
 const mapStateToProps = state => ({
   professor: state.professor
 });

@@ -7,23 +7,24 @@ import { setCourse } from '../../actions/course';
 const CourseCompItem = ({
   courseItem,
   course: { selectedCourses },
-  setCourse,
-  history
+  setCourse
 }) => {
-  //   console.log(courseItem);
   const addSection = (
-    <Link
-      to={`/courses/${courseItem.id}`}
-      className='btn'
-      onClick={e => {
-        setCourse(courseItem);
-      }}
-    >
-      Tap to add section
-    </Link>
+    <div className='courseSection'>
+      <Link
+        to={`/courses/${courseItem.id}`}
+        className='btn'
+        onClick={e => {
+          setCourse(courseItem);
+        }}
+      >
+        Add section
+      </Link>
+    </div>
   );
 
   const changeSection = (
+    // <div className='courseSection'>
     <Link
       to={`/courses/${courseItem.id}`}
       className='btn lead'
@@ -33,6 +34,7 @@ const CourseCompItem = ({
     >
       Change section
     </Link>
+    // </div>
   );
 
   // Get the updated course with selected section
@@ -48,42 +50,43 @@ const CourseCompItem = ({
         <h4>{courseItem.creditHour} Credits</h4>
       </div>
       <div className='divider' />
-      {
-        <div>
-          {tempCourse === null
-            ? addSection
-            : [
-                'section' in tempCourse ? (
-                  <div className='sectionDetail'>
-                    <h3>Professor {tempCourse.section.professorName}</h3>
-                    <table>
-                      <tr>
-                        <th>Section</th>
-                        <th>Day of Week</th>
-                        <th>Start</th>
-                        <th>End</th>
-                      </tr>
-                      <tr>
-                        <td>{tempCourse.section.sectionCode}</td>
-                        <td>
-                          {tempCourse.section.meetingTimes
-                            .sort((a, b) => a.dayOfWeek - b.dayOfWeek)
-                            .map(time => (
-                              <span> {time.dayOfWeek} </span>
-                            ))}
-                        </td>
-                        <td>{tempCourse.section.meetingTimes[0].startTime}</td>
-                        <td>{tempCourse.section.meetingTimes[0].endTime}</td>
-                        <td> {changeSection}</td>
-                      </tr>
-                    </table>
-                  </div>
-                ) : (
-                  addSection
-                )
-              ]}
-          {/* {currentCourse.section === 0 ? addSection : displaySection} */}
-          {/* {currentCourse === null
+      <div>
+        {tempCourse === null
+          ? addSection
+          : [
+              'section' in tempCourse ? (
+                <div className='sectionDetail'>
+                  <h3>Professor {tempCourse.section.professorName}</h3>
+                  <table>
+                    <tr>
+                      <th>Section</th>
+                      <th>Day of Week</th>
+                      <th>Start</th>
+                      <th>End</th>
+                    </tr>
+                    <tr>
+                      <td>{tempCourse.section.sectionCode}</td>
+                      <td>
+                        {tempCourse.section.meetingTimes
+                          .sort((a, b) => a.dayOfWeek - b.dayOfWeek)
+                          .map(time => (
+                            <span> {time.dayOfWeek} </span>
+                          ))}
+                      </td>
+                      <td>{tempCourse.section.meetingTimes[0].startTime}</td>
+                      <td>{tempCourse.section.meetingTimes[0].endTime}</td>
+                      <td> {changeSection}</td>
+                    </tr>
+                  </table>
+                </div>
+              ) : (
+                addSection
+              )
+            ]}
+      </div>
+
+      {/* {currentCourse.section === 0 ? addSection : displaySection} */}
+      {/* {currentCourse === null
             ? addSection
             : [
                 'section' in currentCourse ? (
@@ -117,8 +120,6 @@ const CourseCompItem = ({
                   addSection
                 )
               ]} */}
-        </div>
-      }
     </div>
   );
 };
