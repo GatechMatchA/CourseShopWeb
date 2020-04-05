@@ -8,6 +8,7 @@ import { getCourse } from '../../actions/course';
 import { getProfessors } from '../../actions/professor';
 
 import Professor from './Professor';
+import ProfessorDetail from './ProfessorDetail';
 
 const Course = ({
   match,
@@ -30,7 +31,14 @@ const Course = ({
       <p className='lead'>
         <i className='fas fa-book' /> Compare this course's sections
       </p>
-      <Professor courseId={match.params.id} />
+      <div className='sectionCompLayout'>
+        <div>
+          <Professor courseId={match.params.id} />
+        </div>
+        <div>
+          <ProfessorDetail />
+        </div>
+      </div>
     </Fragment>
   );
 };

@@ -7,12 +7,12 @@ import Section from './Section';
 
 const Professor = ({ courseId, professor: { professors }, setProf, match }) => {
   return (
-    <Fragment>
+    <div>
       {professors.length > 0 &&
         professors
           .sort((a, b) => a.name.lastName.localeCompare(b.name.lastName))
           .map(professor => (
-            <div className='professor'>
+            <div className='professorSection'>
               <div className='profName'>
                 <h4>
                   {professor.name.firstName} {professor.name.lastName}
@@ -35,6 +35,17 @@ const Professor = ({ courseId, professor: { professors }, setProf, match }) => {
               </div>
 
               <div className='profDetailBtn'>
+                <button
+                  className='btn btn-primary'
+                  onClick={e => {
+                    setProf(professor);
+                  }}
+                >
+                  Details
+                </button>
+              </div>
+
+              {/* <div className='profDetailBtn'>
                 <Link
                   to={`/courses/${courseId}/professors/${professor.professor}`}
                   className='btn btn-primary'
@@ -44,30 +55,14 @@ const Professor = ({ courseId, professor: { professors }, setProf, match }) => {
                 >
                   Details
                 </Link>
-              </div>
+              </div> */}
 
               <Section professor={professor} />
-              {/* {professor.sections.map(section => (
-            <div className='profName'>
-              <h4>{section.sectionCode}</h4>
-            </div>
-          ))} */}
             </div>
           ))}
-    </Fragment>
-
-    // <div className='courseCompItem'>
-    //   <div className='courseInfo'>
-    //     {professors.map(professor => (
-    //       <div> {professor.name.lastName}</div>
-    //     ))}
-    //   </div>
-
-    //   {/* <div className='divider' /> */}
-    // </div>
+    </div>
   );
 };
-// <div className='courseCompItem bg-white p-1 my-1'>
 
 Professor.propTypes = {
   //   mapProfessor: PropTypes.func.isRequired,

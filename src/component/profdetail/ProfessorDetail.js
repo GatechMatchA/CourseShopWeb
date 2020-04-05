@@ -8,7 +8,7 @@ import { XYPlot, VerticalBarSeries, XAxis, YAxis } from 'react-vis';
 import { getReviews } from '../../actions/review';
 import ReviewItem from './ReviewItem';
 
-const Course = ({
+const ProfessorDetail = ({
   professor: { currentprof, loading },
   match,
   getReviews,
@@ -67,10 +67,10 @@ const Course = ({
   );
 };
 
-Course.propTypes = {};
+ProfessorDetail.propTypes = {};
 
 const mapStateToProps = state => ({
   professor: state.professor,
   review: state.review
 });
-export default connect(mapStateToProps, { getReviews })(Course);
+export default connect(mapStateToProps, { getReviews })(ProfessorDetail);

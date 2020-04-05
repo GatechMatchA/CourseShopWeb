@@ -613,8 +613,9 @@ button {
   grid-template-columns: 3fr 3px 4fr;
   grid-gap: 2rem;
   align-items: center;
-  border: 2px solid var(--green-color);
+  /* border: 2px solid var(--green-color); */
   border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .courseInfo {
@@ -645,19 +646,26 @@ button {
 }
 
 /* Section Comparison Page */
-/* .sectionCompLayout{
+.sectionCompLayout {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-column-gap: 30px;
+}
 
-} */
-.professor {
+.professorSection {
   /* height: 100px; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 100%;
   display: grid;
   /* grid-template-columns: 40% 20% 20% 20%; */
   /* grid-gap: 1rem; */
   align-items: center;
-  border: 2px solid var(--green-color);
+  /* border: 2px solid var(--green-color); */
   border-radius: 20px;
   /* padding: 0.5rem; */
-  margin: 2rem;
+  /* margin: 0.5rem; */
+  margin-bottom: 2rem;
+
   /* grid-template-rows: 1fr auto; */
 
   grid-template-columns: repeat(5, [col] 16%);
@@ -671,7 +679,7 @@ button {
   height: 100%;
   padding: 20px;
   font-size: 20px;
-  border-radius: 20px 0 0 20px;
+  border-radius: 20px 0 0 0;
   text-align: center;
 
   grid-column: col / span 2;
@@ -698,17 +706,19 @@ button {
 
 .profDetailBtn {
   background-color: #fff;
-  height: 100%;
+
   /* border: 1px solid var(--green-color); */
-  padding: 20px;
+  /* padding: 20px; */
   font-size: 15px;
-  border-radius: 0 20px 20px 0;
+  border-radius: 0 20px 0 20px;
   text-align: center;
-  margin-left: 0.5rem;
+  margin-top: 20%;
+  margin-bottom: 20%;
+  height: 60%;
   align-items: center;
   justify-items: center;
 
-  grid-column: col6 / span;
+  grid-column: col6;
   grid-row: row;
 }
 /* .profEasiness {
@@ -745,19 +755,29 @@ button {
   grid-row: 1;
 }
 
+/* Professor detail segment */
+.sectionProfSegment {
+  width: 100%;
+
+  align-items: center;
+  /* border: 1px solid var(--light-color); */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+/* Professor detail page */
 .profStatsChart {
-  width: 90%;
-  /* display: flex; */
-  /* flex-direction: row; */
+  width: 100%;
   display: grid;
-  grid-row-gap: 50px;
-  padding: 20px;
-  grid-gap: 2rem;
+  grid-row-gap: 10px;
+  /* padding: 10px; */
+  grid-gap: 20px;
   align-items: center;
   color: var(--primary-color);
   border-radius: 20px;
   border: 2px solid var(--primary-color);
-  grid-template-columns: repeat(4, [col] 20%);
+  /* grid-template-columns: repeat(4, [col] 20%); */
+  grid-template-columns: 30% 30% 30%;
   grid-template-rows: [row];
 }
 
@@ -771,23 +791,7 @@ button {
   font-size: 15px;
   text-align: center;
   margin-left: 1rem;
-  grid-column: 1/2;
-  grid-row: 1;
-}
-
-.profEas {
-  background-color: #bfd7ea;
-  height: 60%;
-  /* border: 1px solid var(--green-color); */
-  padding: 20px;
-  font-size: 30px;
-  /* border-radius: 20px 0 0 20px; */
-  text-align: center;
-  margin-left: 0.5rem;
-  align-items: center;
-  justify-items: center;
-
-  grid-column: 3;
+  grid-column: 1;
   grid-row: 1;
 }
 
@@ -799,11 +803,27 @@ button {
   font-size: 30px;
   /* border-radius: 20px 0 0 20px; */
   text-align: center;
-  margin-left: 0.5rem;
+  /* margin-left: 0.5rem; */
   align-items: center;
   justify-items: center;
 
-  grid-column: 4;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.profEas {
+  background-color: #bfd7ea;
+  height: 60%;
+  /* border: 1px solid var(--green-color); */
+  padding: 20px;
+  font-size: 30px;
+  /* border-radius: 20px 0 0 20px; */
+  text-align: center;
+  /* margin-left: 0.5rem; */
+  align-items: center;
+  justify-items: center;
+
+  grid-column: 3;
   grid-row: 1;
 }
 
