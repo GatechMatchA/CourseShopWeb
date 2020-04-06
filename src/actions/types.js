@@ -24,6 +24,7 @@ export const SELECT_SECTION = 'SELECT_SECTION';
 
 export const GET_PROFS = 'GET_PROFS';
 export const SET_PROF = 'SET_PROF';
+export const GET_COURSE_SECTIONS = 'GET_COURSE_SECTIONS';
 
 export const GET_REVIEWS = 'GET_REVIEWS';
 export const UPVOTE = 'UPVOTE';

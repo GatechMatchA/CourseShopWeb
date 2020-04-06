@@ -74,6 +74,9 @@ const Register = ({ setAlert, register }) => {
           />
         </div>
         <input type='submit' className='btn btn-primary' value='Register' />
+        <Link className='btn btn-primary my-1' to='/'>
+          Go Back
+        </Link>
       </form>
       <p className='my-1'>
         Already have an account? <Link to='/login'>Sign In</Link>

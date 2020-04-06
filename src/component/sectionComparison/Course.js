@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { getCourse } from '../../actions/course';
 import { getProfessors } from '../../actions/professor';
 
-import Professor from './Professor';
+import ProfessorSection from './ProfessorSection';
 import ProfessorDetail from './ProfessorDetail';
 
 const Course = ({
@@ -16,9 +16,12 @@ const Course = ({
   professor: { professors, loading }
 }) => {
   useEffect(() => {
-    // getCourse(match.params.id);
     getProfessors(match.params.id);
   }, []);
+
+  //   const onSort = sortKey => {
+  //     professors.sort((a, b) => a.sortKey < b.sortKey);
+  //   };
 
   return loading ? (
     <Spinner />
@@ -31,9 +34,18 @@ const Course = ({
       <p className='lead'>
         <i className='fas fa-book' /> Compare this course's sections
       </p>
+
+      {/* <table className='p-1'>
+        <tr>
+          <th>Section</th>
+          <th>Day of Week</th>
+          <th>Start</th>
+          <th>End</th>
+        </tr>
+      </table> */}
       <div className='sectionCompLayout'>
         <div>
-          <Professor courseId={match.params.id} />
+          <ProfessorSection courseId={match.params.id} />
         </div>
         <div>
           <ProfessorDetail />

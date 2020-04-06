@@ -43,9 +43,6 @@ const Review = ({
   };
   return (
     <Fragment>
-      <Link to='/' className='btn'>
-        Back To main page
-      </Link>
       <h1 className='large text-primary'>Add Review Page</h1>
       <p className='lead'>
         <i className='fas fa-book' /> Write your reviews here

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_PROFS, SET_PROF } from './types';
+import { GET_PROFS, SET_PROF, GET_COURSE_SECTIONS } from './types';
 import API from './API';
 
 // Get professors by courseId
@@ -35,9 +35,23 @@ export const getProfessors = courseId => async dispatch => {
       type: GET_PROFS,
       payload: newProfs
     });
+
+    // // Also add section to sections list
+    // const allsections = [];
+    // // console.log(newProfs);
+    // for (const prof of newProfs) {
+    //   if (prof.sections.length > 0) {
+    //     console.log(prof.sections);
+    //     prof.sections.forEach(section => allsections.push(section));
+    //   }
+    // }
+    // dispatch({
+    //   type: GET_COURSE_SECTIONS,
+    //   payload: allsections
+    // });
   } catch (error) {
     console.log(error);
-    dispatch(setAlert(error.response.statusText, 'danger'));
+    dispatch(setAlert(error.response, 'danger'));
   }
 };
 
@@ -76,6 +90,7 @@ export const getSections = async (courseId, prof) => {
       `/api/sections?course=${courseId}&professor=${prof.professor}`
     );
     prof.sections = res.data.payload;
+
     return prof;
   } catch (error) {
     console.log(error);

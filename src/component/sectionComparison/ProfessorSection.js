@@ -5,12 +5,29 @@ import { connect } from 'react-redux';
 import { setProf } from '../../actions/professor';
 import Section from './Section';
 
-const Professor = ({ courseId, professor: { professors }, setProf, match }) => {
+const ProfessorSection = ({ professor: { professors }, setProf }) => {
+  //   const [profList, setProfList] = useState(professors);
+  //   profList = professors;
+  //   const onSort = () => {
+  //     professors = professors.sort((a, b) => b.averageGpa - a.averageGpa);
+  //     // setProfList(profList.sort((a, b) => a[sortKey] - b[sortKey]));
+  //   };
+
   return (
     <div>
+      {/* <div className='sectionSort'>
+        <div className='sectionSortText'> Sort sections by: </div>
+        <div className='sectionSortGPA'>
+          GPA
+          <i class='fas fa-sort'></i>
+        </div>
+        <div className='sectionSortQuality'> Quality</div>
+        <div className='sectionSortEasiness'> Easiness</div>
+      </div> */}
       {professors.length > 0 &&
         professors
-          .sort((a, b) => a.name.lastName.localeCompare(b.name.lastName))
+          //   .sort((a, b) => a.name.lastName.localeCompare(b.name.lastName))
+          //   .sort((a, b) => a.averageGpa - b.averageGpa)
           .map(professor => (
             <div className='professorSection'>
               <div className='profName'>
@@ -64,7 +81,7 @@ const Professor = ({ courseId, professor: { professors }, setProf, match }) => {
   );
 };
 
-Professor.propTypes = {
+ProfessorSection.propTypes = {
   //   mapProfessor: PropTypes.func.isRequired,
   //   course: PropTypes.object.isRequired
 };
@@ -73,4 +90,4 @@ const mapStateToProps = state => ({
   professor: state.professor
 });
 
-export default connect(mapStateToProps, { setProf })(Professor);
+export default connect(mapStateToProps, { setProf })(ProfessorSection);

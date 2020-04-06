@@ -362,26 +362,24 @@ p.thicker {
 /* Video */
 .video {
   position: relative;
-  padding: 2rem;
+  /* padding: 2rem; */
   height: 80vh;
 }
-.video-inner {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 20%;
-}
 
-.video-inner .text {
+.video .text {
   color: var(--orange-color);
   font-size: 1.2rem;
   vertical-align: middle;
+  margin-left: 40%;
+  margin-right: 40%;
+  width: 20%;
+  text-align: center;
 }
 
 iframe {
   margin: auto;
-  width: 90%;
-  height: 80%;
+  width: 60%;
+  height: 100%;
   border: 5px solid var(--primary-color);
   padding: 10px;
   display: block;
@@ -645,6 +643,58 @@ button {
   width: 50%;
 }
 
+/* Section Sort Part */
+.sectionSort {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  grid-template-columns: repeat(5, [col] 16%);
+  grid-template-rows: [row] auto [row] auto [row];
+  grid-auto-rows: auto;
+}
+.sectionSortText {
+  height: 100%;
+  padding: 20px;
+  font-size: 15px;
+  text-align: center;
+  margin-left: 0.5rem;
+  grid-column: 1 / span 2;
+  grid-row: row;
+}
+.sectionSortGPA {
+  background-color: #bfd7ea;
+  height: 100%;
+  padding: 20px;
+  font-size: 15px;
+  text-align: center;
+  margin-left: 0.5rem;
+  grid-column: 3;
+  grid-row: row;
+}
+
+.sectionSortQuality {
+  background-color: #bfd7ea;
+  height: 100%;
+  padding: 20px;
+  font-size: 15px;
+  text-align: center;
+  margin-left: 0.5rem;
+  grid-column: 4;
+  grid-row: row;
+}
+
+.sectionSortEasiness {
+  background-color: #bfd7ea;
+  height: 100%;
+  padding: 20px;
+  font-size: 15px;
+  text-align: center;
+  margin-left: 0.5rem;
+  grid-column: 5;
+  grid-row: row;
+}
 /* Section Comparison Page */
 .sectionCompLayout {
   display: grid;
@@ -653,7 +703,6 @@ button {
 }
 
 .professorSection {
-  /* height: 100px; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 100%;
   display: grid;
@@ -787,7 +836,7 @@ button {
   justify-items: center;
   /* width: 80%; */
   /* height: 100%; border: 1px solid var(--green-color); */
-  padding: 10px;
+  /* padding: 5px; */
   font-size: 15px;
   text-align: center;
   margin-left: 1rem;

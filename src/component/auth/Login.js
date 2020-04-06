@@ -47,7 +47,11 @@ const Login = ({ login }) => {
         </div>
 
         <input type='submit' className='btn btn-primary' value='Login' />
+        <Link className='btn btn-primary my-1' to='/'>
+          Go Back
+        </Link>
       </form>
+
       <p className='my-1'>
         Don't have an account? <Link to='/register'>Sign Up</Link>
       </p>

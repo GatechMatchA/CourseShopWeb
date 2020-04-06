@@ -43,10 +43,8 @@ const Landing = props => {
       </section>
 
       <section class='video'>
-        <div class='video-inner'>
-          <div class='text'>
-            <h1 class='medium'>Our video</h1>
-          </div>
+        <div class='text'>
+          <h1 class='large'>Our video</h1>
         </div>
         <iframe src='https://www.youtube.com/embed/tgbNymZ7vqY'> </iframe>
       </section>

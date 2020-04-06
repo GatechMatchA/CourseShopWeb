@@ -23,9 +23,9 @@ const CourseComparison = ({
       >
         Back To All Courses
       </Link>
-      <Link to='/calendar' className='btn'>
+      {/* <Link to='/calendar' className='btn'>
         Go to calendar
-      </Link>
+      </Link> */}
       <h1 className='large text-primary'>Course Comparison Page</h1>
       <p className='lead'>
         <i className='fas fa-book' /> Compare your courses

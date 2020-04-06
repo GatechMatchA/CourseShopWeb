@@ -21,9 +21,6 @@ const ProfessorDetail = ({
     <Spinner />
   ) : (
     <div className='sectionProfSegment'>
-      {/* <Link to={`/courses/${match.params.id}`} className='btn'>
-        Back To Section Comparison
-      </Link> */}
       <h1 className='medium text-primary'>Details</h1>
       {currentprof !== '' && (
         <p className='lead'>
