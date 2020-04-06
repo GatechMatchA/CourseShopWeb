@@ -27,25 +27,25 @@ export const getReviews = (courseId, profId) => async dispatch => {
 
 // Up/down Vote
 export const upVote = (reviewId, currentUp) => async dispatch => {
-  const token = 'Basic ' + localStorage.getItem('token');
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: token
-    }
-  };
+  //   const token = 'Basic ' + localStorage.getItem('token');
+  //   const config = {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       Authorization: token
+  //     }
+  //   };
 
-  const review = reviewId;
-  const status = 1;
-  const data = JSON.stringify({
-    review,
-    status
-  });
+  //   const review = reviewId;
+  //   const status = 1;
+  //   const data = JSON.stringify({
+  //     review,
+  //     status
+  //   });
 
-  console.log('upvote', data, config);
+  //   console.log('upvote', data, config);
 
   try {
-    const res = await API.put('/api/votes', data, config);
+    // const res = await API.put('/api/votes', data, config);
 
     // console.log('res upvote', res.data.payload);
     // console.log(currentUp);
