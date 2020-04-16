@@ -8,9 +8,9 @@ import Register from './component/auth/Register';
 import Login from './component/auth/Login';
 import Alert from './component/layout/Alert';
 import Courses from './component/courseSelection/Courses';
-import CourseComparison from './component/course/CourseComparison';
-import Course from './component/sectionComparison/Course';
-import Professor from './component/profdetail/ProfessorDetail';
+import CourseComparison from './component/courseComparison/CourseComparison';
+// import Course from './component/sectionComparison/Course';
+// import Professor from './component/profdetail/ProfessorDetail';
 import Review from './component/addReview/Review';
 import Calendar from './component/calendar/Calendar';
 
@@ -35,12 +35,12 @@ const App = () => (
               path='/coursecomparison'
               component={CourseComparison}
             />
-            <Route exact path='/courses/:id' component={Course} />
+            {/* <Route exact path='/courses/:id' component={Course} />
             <Route
               exact
               path='/courses/:id/professors/:profId'
               component={Professor}
-            />
+            /> */}
             <Route exact path='/addreview' component={Review} />
             <Route exact path='/calendar' component={Calendar} />
           </Switch>

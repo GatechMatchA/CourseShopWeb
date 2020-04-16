@@ -1,6 +1,5 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { selectCourse, unselectCourse } from '../../actions/course';
 import { connect } from 'react-redux';
 
@@ -16,7 +15,6 @@ const CourseItem = ({
     selectedCourses.some(course => course.id === courseItem.id) ? true : false
   );
 
-  //   console.log(courseItem);
   const onClick = e => {
     setSide(!side);
   };
@@ -42,7 +40,6 @@ const CourseItem = ({
               onClick={e => {
                 e.preventDefault();
                 setisSelected(!isSelected);
-
                 isSelected
                   ? unselectCourse(courseItem)
                   : selectCourse(courseItem);

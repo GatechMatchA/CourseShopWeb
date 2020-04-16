@@ -35,14 +35,6 @@ const Course = ({
         <i className='fas fa-book' /> Compare this course's sections
       </p>
 
-      {/* <table className='p-1'>
-        <tr>
-          <th>Section</th>
-          <th>Day of Week</th>
-          <th>Start</th>
-          <th>End</th>
-        </tr>
-      </table> */}
       <div className='sectionCompLayout'>
         <div>
           <ProfessorSection courseId={match.params.id} />

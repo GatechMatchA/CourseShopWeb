@@ -1,6 +1,11 @@
-import axios from 'axios';
 import { setAlert } from './alert';
-import { GET_PROFS, SET_PROF, GET_COURSE_SECTIONS } from './types';
+import {
+  GET_PROFS,
+  SET_PROF,
+  CLEAN_CURRENT_PROF,
+  SORT_PROF_UP,
+  SORT_PROF_DOWN
+} from './types';
 import API from './API';
 
 // Get professors by courseId
@@ -103,6 +108,29 @@ export const setProf = prof => async dispatch => {
     type: SET_PROF,
     payload: prof
   });
+};
+
+// Clear current professor
+export const clearCurrentProf = () => async dispatch => {
+  dispatch({
+    type: CLEAN_CURRENT_PROF,
+    payload: null
+  });
+};
+
+// Clear current professor
+export const sortProfs = (sortKey, sortSeq) => async dispatch => {
+  if (sortSeq === -1) {
+    dispatch({
+      type: SORT_PROF_UP,
+      payload: sortKey
+    });
+  } else {
+    dispatch({
+      type: SORT_PROF_DOWN,
+      payload: sortKey
+    });
+  }
 };
 
 // export const getProfessors = courseId => dispatch => {

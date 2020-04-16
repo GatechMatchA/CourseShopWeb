@@ -1,4 +1,10 @@
-import { GET_PROFS, SET_PROF, GET_COURSE_SECTIONS } from '../actions/types';
+import {
+  GET_PROFS,
+  SET_PROF,
+  CLEAN_CURRENT_PROF,
+  SORT_PROF_DOWN,
+  SORT_PROF_UP
+} from '../actions/types';
 
 const initialState = {
   professors: [],
@@ -22,6 +28,31 @@ export default function(state = initialState, action) {
       return {
         ...state,
         currentprof: payload,
+        loading: false
+      };
+
+    case CLEAN_CURRENT_PROF:
+      return {
+        ...state,
+        currentprof: '',
+        loading: false
+      };
+
+    case SORT_PROF_UP:
+      return {
+        ...state,
+        professors: [
+          ...state.professors.sort((a, b) => a[payload] - b[payload])
+        ],
+        loading: false
+      };
+
+    case SORT_PROF_DOWN:
+      return {
+        ...state,
+        professors: [
+          ...state.professors.sort((a, b) => b[payload] - a[payload])
+        ],
         loading: false
       };
 

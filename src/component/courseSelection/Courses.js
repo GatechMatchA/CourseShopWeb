@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Courses = ({
   getCourses,
-  course: { courses, loading, selectedCourseNum, selectedCourses }
+  course: { courses, loading, selectedCourses }
 }) => {
   const [searchText, setsearchText] = useState('');
 
@@ -28,7 +28,7 @@ const Courses = ({
       </p>
       <div className='searchbox'>
         <button type='submit' className='searchButton'>
-          <i class='fa fa-search'></i>
+          <i className='fa fa-search'></i>
         </button>
         <input
           type='text'
@@ -47,7 +47,7 @@ const Courses = ({
             setsearchText('');
           }}
         >
-          <i class='fa fa-times'></i>
+          <i className='fa fa-times'></i>
         </button>
       </div>
       <div className='btnContainer'>
@@ -57,7 +57,7 @@ const Courses = ({
       </div>
       <div className='courses'>
         {courses.map(course => (
-          <CourseItem key={course._id} courseItem={course} />
+          <CourseItem key={course.id} courseItem={course} />
         ))}
       </div>
     </Fragment>
@@ -66,9 +66,7 @@ const Courses = ({
 
 Courses.propTypes = {
   getCourses: PropTypes.func.isRequired,
-  course: PropTypes.object.isRequired,
-  selectedCourseNum: PropTypes.number.isRequired,
-  selectedCourses: PropTypes.func.isRequired
+  course: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -8,7 +8,8 @@ import {
   GET_COURSE,
   SET_COMPARE_COURSE, //for course comparison page
   CLEAN_COMPARE_COURSE, //for course comparison page
-  SELECT_SECTION
+  SELECT_SECTION,
+  UNSELECT_SECTION
 } from '../actions/types';
 
 const initialState = {
@@ -17,7 +18,7 @@ const initialState = {
   loading: true,
   error: {},
   selectedCourses: [],
-  currentCourseCompare: null
+  currentCourseCompare: ''
 };
 
 export default function(state = initialState, action) {
@@ -85,10 +86,21 @@ export default function(state = initialState, action) {
     case CLEAN_COMPARE_COURSE:
       return {
         ...state,
-        currentCourseCompare: null
+        currentCourseCompare: ''
       };
 
     case SELECT_SECTION:
+      return {
+        ...state,
+        currentCourse: payload,
+        selectedCourses: [
+          ...state.selectedCourses.map(course =>
+            course.id === payload.id ? payload : course
+          )
+        ]
+      };
+
+    case UNSELECT_SECTION:
       return {
         ...state,
         currentCourse: payload,

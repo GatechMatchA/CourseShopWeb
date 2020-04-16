@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { setAlert } from './alert';
 import {
   GET_COURSES,
@@ -8,6 +7,7 @@ import {
   UNSELECT_COURSE,
   CLEAN_COURSE,
   SELECT_SECTION,
+  UNSELECT_SECTION,
   GET_COURSE,
   SET_COMPARE_COURSE,
   CLEAN_COMPARE_COURSE
@@ -123,9 +123,18 @@ export const setCourse = course => async dispatch => {
 
 //Select this section
 export const selectSection = (course, section) => async dispatch => {
-  course.section = section;
+  course.selectedSection = section;
   dispatch({
     type: SELECT_SECTION,
+    payload: course
+  });
+};
+
+//Unselect this section
+export const unselectSection = (course, section) => async dispatch => {
+  course.selectedSection = '';
+  dispatch({
+    type: UNSELECT_SECTION,
     payload: course
   });
 };
