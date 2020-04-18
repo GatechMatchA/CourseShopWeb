@@ -4,6 +4,7 @@ import auth from './auth';
 import course from './course';
 import professor from './professor';
 import review from './review';
+import calendar from './calendar';
 
 //rootReducer
 export default combineReducers({
@@ -11,5 +12,6 @@ export default combineReducers({
   auth,
   course,
   professor,
-  review
+  review,
+  calendar,
 });

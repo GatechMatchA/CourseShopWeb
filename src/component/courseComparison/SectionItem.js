@@ -8,7 +8,7 @@ const SectionItem = ({
   professor,
   course: { currentCourseCompare },
   selectSection,
-  unselectSection
+  unselectSection,
 }) => {
   const [isSelected, setisSelected] = useState(
     currentCourseCompare.selectedSection === undefined
@@ -23,7 +23,7 @@ const SectionItem = ({
       className='sectionDetail'
       style={{
         backgroundColor: isSelected ? '#90DDD0' : 'white',
-        border: isSelected ? '#90DDD0' : 'white'
+        border: isSelected ? '#90DDD0' : 'white',
       }}
     >
       <table className='p-1'>
@@ -38,16 +38,16 @@ const SectionItem = ({
           <td>
             {section.meetingTimes
               .sort((a, b) => a.dayOfWeek - b.dayOfWeek)
-              .map(time => (
+              .map((time) => (
                 <span> {time.dayOfWeek} </span>
               ))}
           </td>
-          <td>{section.meetingTimes[0].startTime}</td>
-          <td>{section.meetingTimes[0].endTime}</td>
+          <td>{section.meetingTimes[0].startTime.slice(0, 5)}</td>
+          <td>{section.meetingTimes[0].endTime.slice(0, 5)}</td>
           <td>
             <button
               className='btn btn-primary'
-              onClick={e => {
+              onClick={(e) => {
                 e.preventDefault();
                 section.professorName =
                   professor.name.firstName + ' ' + professor.name.lastName;
@@ -114,8 +114,8 @@ const SectionItem = ({
 
 SectionItem.propTypes = {};
 
-const mapStateToProps = state => ({
-  course: state.course
+const mapStateToProps = (state) => ({
+  course: state.course,
 });
 
 export default connect(mapStateToProps, { selectSection, unselectSection })(

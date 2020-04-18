@@ -11,8 +11,8 @@ const SectionComparison = ({
   getProfessors,
   sortProfs,
   setProf,
-  professor: { professors },
-  course: { currentCourseCompare, loading }
+  professor: { professors, loading },
+  course: { currentCourseCompare },
 }) => {
   const isFirstRun = useRef(true);
   useEffect(() => {
@@ -23,17 +23,15 @@ const SectionComparison = ({
     }
   }, [currentCourseCompare]);
 
-  const onSortUp = sortKey => {
+  const onSortUp = (sortKey) => {
     sortProfs(sortKey, -1);
   };
 
-  const onSortDown = sortKey => {
+  const onSortDown = (sortKey) => {
     sortProfs(sortKey, 1);
   };
 
-  return loading ? (
-    <Spinner />
-  ) : (
+  return (
     <Fragment>
       {currentCourseCompare !== '' && (
         <div>
@@ -86,12 +84,15 @@ const SectionComparison = ({
             </div>
           </div>
 
+          {/* If professors are not loaded: use Spinner */}
+          {loading ? <Spinner /> : <div />}
           {professors.length > 0 &&
+            !loading &&
             professors
               //   .sort(onSort(sortKey))
               //   .sort((a, b) => a.name.lastName.localeCompare(b.name.lastName))
               //   .sort((a, b) => a.averageGpa - b.averageGpa)
-              .map(professor => (
+              .map((professor) => (
                 <div className='professorSection'>
                   <div className='profName'>
                     <h4>
@@ -117,7 +118,7 @@ const SectionComparison = ({
                   <div className='profDetailBtn'>
                     <button
                       className='btn btn-primary'
-                      onClick={e => {
+                      onClick={(e) => {
                         setProf(professor);
                       }}
                     >
@@ -128,7 +129,7 @@ const SectionComparison = ({
                   {professor.sections.length > 0 &&
                     professor.sections
                       .sort((a, b) => a.sectionCode - b.sectionCode)
-                      .map(section => (
+                      .map((section) => (
                         <SectionItem
                           key={section.id}
                           section={section}
@@ -146,12 +147,12 @@ const SectionComparison = ({
 SectionComparison.propTypes = {
   course: PropTypes.object.isRequired,
   professor: PropTypes.object.isRequired,
-  getProfessors: PropTypes.func.isRequired
+  getProfessors: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   course: state.course,
-  professor: state.professor
+  professor: state.professor,
 });
 export default connect(mapStateToProps, { getProfessors, setProf, sortProfs })(
   SectionComparison

@@ -13,7 +13,7 @@ import ProfessorDetail from './ProfessorDetail';
 const CourseComparison = ({
   course: { loading, selectedCourses },
   clearCourseCompare,
-  clearCurrentProf
+  clearCurrentProf,
 }) => {
   return loading ? (
     <Spinner />
@@ -22,16 +22,16 @@ const CourseComparison = ({
       <Link
         to='/courses'
         className='btn'
-        onClick={e => {
+        onClick={(e) => {
           clearCourseCompare();
           clearCurrentProf();
         }}
       >
         Back To All Courses
       </Link>
-      {/* <Link to='/calendar' className='btn'>
+      <Link to='/calendar' className='btn'>
         Go to calendar
-      </Link> */}
+      </Link>
       <h1 className='large text-primary'>Course Comparison Page</h1>
       <p className='lead'>
         <i className='fas fa-book' /> Compare your courses
@@ -39,7 +39,7 @@ const CourseComparison = ({
       <div className='courseCompLayout'>
         <div className='courseComparison'>
           <h3 className='small text-primary'>Choose Courses</h3>
-          {selectedCourses.map(course => (
+          {selectedCourses.map((course) => (
             <CourseCompItem key={course.id} courseItem={course} />
           ))}
         </div>
@@ -61,11 +61,11 @@ CourseComparison.propTypes = {
   //   course: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  course: state.course
+const mapStateToProps = (state) => ({
+  course: state.course,
 });
 
 export default connect(mapStateToProps, {
   clearCourseCompare,
-  clearCurrentProf
+  clearCurrentProf,
 })(CourseComparison);

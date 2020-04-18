@@ -9,7 +9,7 @@ import {
   SET_COMPARE_COURSE, //for course comparison page
   CLEAN_COMPARE_COURSE, //for course comparison page
   SELECT_SECTION,
-  UNSELECT_SECTION
+  UNSELECT_SECTION,
 } from '../actions/types';
 
 const initialState = {
@@ -18,10 +18,10 @@ const initialState = {
   loading: true,
   error: {},
   selectedCourses: [],
-  currentCourseCompare: ''
+  currentCourseCompare: '',
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
@@ -29,86 +29,86 @@ export default function(state = initialState, action) {
       return {
         ...state,
         courses: payload.payload,
-        loading: false
+        loading: false,
       };
 
     case SEARCH_COURSES:
       return {
         ...state,
         courses: payload,
-        loading: false
+        loading: false,
       };
     case COURSE_ERROR:
       return {
         ...state,
         error: payload,
-        loading: false
+        loading: false,
       };
 
     case CLEAN_COURSE:
       return {
         ...state,
         selectedCourses: state.selectedCourses.filter(
-          course => course.id !== payload.id
+          (course) => course.id !== payload.id
         ),
-        loading: false
+        loading: false,
       };
 
     case SELECT_COURSE:
       return {
         ...state,
         selectedCourses: [payload, ...state.selectedCourses],
-        loading: false
+        loading: false,
       };
 
     case UNSELECT_COURSE:
       return {
         ...state,
         selectedCourses: state.selectedCourses.filter(
-          course => course.id !== payload.id
+          (course) => course.id !== payload.id
         ),
-        loading: false
+        loading: false,
       };
 
     case GET_COURSE:
       return {
         ...state,
         selectedCourse: payload,
-        loading: false
+        loading: false,
       };
 
     case SET_COMPARE_COURSE:
       return {
         ...state,
-        currentCourseCompare: payload
+        currentCourseCompare: payload,
       };
 
     case CLEAN_COMPARE_COURSE:
       return {
         ...state,
-        currentCourseCompare: ''
+        currentCourseCompare: '',
       };
 
     case SELECT_SECTION:
       return {
         ...state,
-        currentCourse: payload,
+        currentCourseCompare: payload,
         selectedCourses: [
-          ...state.selectedCourses.map(course =>
+          ...state.selectedCourses.map((course) =>
             course.id === payload.id ? payload : course
-          )
-        ]
+          ),
+        ],
       };
 
     case UNSELECT_SECTION:
       return {
         ...state,
-        currentCourse: payload,
+        currentCourseCompare: payload,
         selectedCourses: [
-          ...state.selectedCourses.map(course =>
+          ...state.selectedCourses.map((course) =>
             course.id === payload.id ? payload : course
-          )
-        ]
+          ),
+        ],
       };
 
     default:

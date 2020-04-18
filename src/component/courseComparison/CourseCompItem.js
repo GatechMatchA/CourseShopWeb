@@ -2,17 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setCourse } from '../../actions/course';
+import { clearCurrentProf } from '../../actions/professor';
 
 const CourseCompItem = ({
   courseItem,
   course: { selectedCourses },
-  setCourse
+  setCourse,
+  clearCurrentProf,
 }) => {
   const addSection = (
     <div className='courseSection'>
       <button
         className='btn btn-primary'
-        onClick={e => {
+        onClick={(e) => {
           setCourse(courseItem);
         }}
       >
@@ -24,8 +26,9 @@ const CourseCompItem = ({
   const changeSection = (
     <button
       className='btn btn-primary'
-      onClick={e => {
+      onClick={(e) => {
         setCourse(courseItem);
+        clearCurrentProf();
       }}
     >
       Change section
@@ -34,7 +37,7 @@ const CourseCompItem = ({
 
   // Get the updated course with selected section
   const tempCourse = selectedCourses.find(
-    course => course.id === courseItem.id
+    (course) => course.id === courseItem.id
   );
 
   return (
@@ -63,77 +66,42 @@ const CourseCompItem = ({
             {changeSection}
 
             {/* <table>
-                    <tr>
-                      <th>Section</th>
-                      <th>Day of Week</th>
-                      <th>Start</th>
-                      <th>End</th>
-                    </tr>
-                    <tr>
-                      <td>{tempCourse.section.sectionCode}</td>
-                      <td>
-                        {tempCourse.section.meetingTimes
-                          .sort((a, b) => a.dayOfWeek - b.dayOfWeek)
-                          .map(time => (
-                            <span> {time.dayOfWeek} </span>
-                          ))}
-                      </td>
-                      <td>{tempCourse.section.meetingTimes[0].startTime}</td>
-                      <td>{tempCourse.section.meetingTimes[0].endTime}</td>
-                      <td> {changeSection}</td>
-                    </tr>
-                  </table> */}
+              <tr>
+                <th>GPA</th>
+                <th>Quality</th>
+                <th>Easiness</th>
+              </tr>
+              <tr>
+                <td>{tempCourse.selectedSection.sectionCode}</td>
+                <td>
+                  {tempCourse.selectedSection.meetingTimes
+                    .sort((a, b) => a.dayOfWeek - b.dayOfWeek)
+                    .map((time) => (
+                      <span> {time.dayOfWeek} </span>
+                    ))}
+                </td>
+                <td>{tempCourse.selectedSection.meetingTimes[0].startTime}</td>
+                <td>{tempCourse.selectedSection.meetingTimes[0].endTime}</td>
+                <td> {changeSection}</td>
+              </tr>
+            </table> */}
           </div>
         ) : (
           addSection
         )}
       </div>
-
-      {/* {currentCourse.section === 0 ? addSection : displaySection} */}
-      {/* {currentCourse === null
-            ? addSection
-            : [
-                'section' in currentCourse ? (
-                  <div className='sectionDetail'>
-                    <h3>Professor {currentCourse.section.professorName}</h3>
-                    <table>
-                      <tr>
-                        <th>Section</th>
-                        <th>Day of Week</th>
-                        <th>Start</th>
-                        <th>End</th>
-                      </tr>
-                      <tr>
-                        <td>{currentCourse.section.sectionCode}</td>
-                        <td>
-                          {currentCourse.section.meetingTimes
-                            .sort((a, b) => a.dayOfWeek - b.dayOfWeek)
-                            .map(time => (
-                              <span> {time.dayOfWeek} </span>
-                            ))}
-                        </td>
-                        <td>
-                          {currentCourse.section.meetingTimes[0].startTime}
-                        </td>
-                        <td>{currentCourse.section.meetingTimes[0].endTime}</td>
-                        <td> {changeSection}</td>
-                      </tr>
-                    </table>
-                  </div>
-                ) : (
-                  addSection
-                )
-              ]} */}
     </div>
   );
 };
 
 CourseCompItem.propTypes = {
-  courseItem: PropTypes.object.isRequired
+  courseItem: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  course: state.course
+const mapStateToProps = (state) => ({
+  course: state.course,
 });
 
-export default connect(mapStateToProps, { setCourse })(CourseCompItem);
+export default connect(mapStateToProps, { setCourse, clearCurrentProf })(
+  CourseCompItem
+);
