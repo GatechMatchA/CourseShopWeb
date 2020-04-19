@@ -13,6 +13,7 @@
     "react": "^16.13.1",
     "react-bar-chart": "^0.1.2",
     "react-bootstrap": "^1.0.0",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
     "react-moment": "^0.9.7",
     "react-popup": "^0.10.0",

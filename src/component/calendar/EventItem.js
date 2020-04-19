@@ -29,10 +29,7 @@ const EventItem = ({ start, end, content }) => {
         {start} - {end}
       </span>
 
-      {/* <em className='event-name'>
-        {content.courseCode} {content.professorName}
-      </em> */}
-      <p className='event-name'>
+      <p className='event-name' style={{ fontSize: '15px' }}>
         {content.courseCode} - Sec {content.sectionCode}
       </p>
       <p className='event-name'>{content.professorName}</p>

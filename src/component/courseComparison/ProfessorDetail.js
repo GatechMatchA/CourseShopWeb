@@ -11,7 +11,7 @@ import ReviewItem from './ReviewItem';
 const ProfessorDetail = ({
   professor: { currentprof, loading },
   getReviews,
-  review: { reviews }
+  review: { reviews },
 }) => {
   const isFirstRun = useRef(true);
   useEffect(() => {
@@ -43,7 +43,7 @@ const ProfessorDetail = ({
                   width={110}
                   xType='ordinal'
                   style={{
-                    fontSize: 10
+                    fontSize: 10,
                   }}
                 >
                   <VerticalBarSeries
@@ -51,7 +51,7 @@ const ProfessorDetail = ({
                       .sort((a, b) => a[0].localeCompare(b[0]))
                       .map(([k, v]) => ({
                         x: k,
-                        y: v
+                        y: v,
                       }))}
                   />
                   <XAxis />
@@ -61,7 +61,7 @@ const ProfessorDetail = ({
               <div
                 className='profQua'
                 style={{
-                  fontSize: 15
+                  fontSize: 15,
                 }}
               >
                 <h5>AVG Quality</h5>
@@ -70,7 +70,7 @@ const ProfessorDetail = ({
               <div
                 className='profEas'
                 style={{
-                  fontSize: 15
+                  fontSize: 15,
                 }}
               >
                 <h5>AVG Easiness</h5>
@@ -80,8 +80,11 @@ const ProfessorDetail = ({
 
             {/* Review Part */}
             <h2 className='small text-primary p-1'>Reviews</h2>
+            {reviews.length === 0 && (
+              <h3>Sorry! No sections available for now</h3>
+            )}
             <div className='reviews'>
-              {reviews.map(review => (
+              {reviews.map((review) => (
                 <ReviewItem key={review._id} reviewItem={review} />
               ))}
             </div>
@@ -94,8 +97,8 @@ const ProfessorDetail = ({
 
 ProfessorDetail.propTypes = {};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   professor: state.professor,
-  review: state.review
+  review: state.review,
 });
 export default connect(mapStateToProps, { getReviews })(ProfessorDetail);

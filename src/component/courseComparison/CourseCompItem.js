@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setCourse } from '../../actions/course';
 import { clearCurrentProf } from '../../actions/professor';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const CourseCompItem = ({
   courseItem,
@@ -40,18 +41,26 @@ const CourseCompItem = ({
     (course) => course.id === courseItem.id
   );
 
+  const [copied, setCopied] = useState(false);
+
+  console.log(copied);
+
   return (
     <div className='courseCompItem bg-white p-1 my-1'>
       <div className='courseInfo'>
         <h3>{courseItem.code}</h3>
         <h5> {courseItem.title}</h5>
-        <h4>{courseItem.creditHour} Credits</h4>
+        <h5>{courseItem.creditHour} Credits</h5>
       </div>
       {/* <div className='divider' /> */}
       <div>
         {tempCourse === null ? (
           addSection
-        ) : 'selectedSection' in tempCourse ? (
+        ) : tempCourse.selectedSection === undefined ? (
+          addSection
+        ) : tempCourse.selectedSection.length === 0 ? (
+          addSection
+        ) : (
           <div className='courseSection'>
             <span className=' text-orange'>Professor: </span>
             <span className=' text-primary'>
@@ -62,6 +71,25 @@ const CourseCompItem = ({
             <span className=' text-primary'>
               {tempCourse.selectedSection.sectionCode}
             </span>
+            <br />
+            <span className=' text-orange'>Copy CRN: </span>
+            {/* <span className=' text-primary'>
+              {tempCourse.selectedSection.crn}
+            </span> */}
+            <CopyToClipboard
+              text={tempCourse.selectedSection.crn}
+              onCopy={() => setCopied(true)}
+            >
+              <span className=' text-primary'>
+                {tempCourse.selectedSection.crn}
+              </span>
+            </CopyToClipboard>
+            {/* <br /> */}
+            {copied ? (
+              <span style={{ color: 'red', fontSize: '10px' }}> - Copied!</span>
+            ) : (
+              <div />
+            )}
 
             {changeSection}
 
@@ -86,8 +114,6 @@ const CourseCompItem = ({
               </tr>
             </table> */}
           </div>
-        ) : (
-          addSection
         )}
       </div>
     </div>

@@ -86,6 +86,9 @@ const SectionComparison = ({
 
           {/* If professors are not loaded: use Spinner */}
           {loading ? <Spinner /> : <div />}
+          {professors.length === 0 && (
+            <h3>Sorry! No sections available for now</h3>
+          )}
           {professors.length > 0 &&
             !loading &&
             professors
