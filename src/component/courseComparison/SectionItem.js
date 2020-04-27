@@ -65,50 +65,6 @@ const SectionItem = ({
         </tr>
       </table>
     </div>
-    // <Fragment>
-    //   {professor.sections.length > 0 &&
-    //     professor.sections
-    //       .sort((a, b) => a.sectionCode - b.sectionCode)
-    //       .map(section => (
-    //         <div className='sectionDetail'>
-    //           <table className='p-1'>
-    //             <tr>
-    //               <th>Section</th>
-    //               <th>Day of Week</th>
-    //               <th>Start</th>
-    //               <th>End</th>
-    //             </tr>
-    //             <tr>
-    //               <td>{section.sectionCode}</td>
-    //               <td>
-    //                 {section.meetingTimes
-    //                   .sort((a, b) => a.dayOfWeek - b.dayOfWeek)
-    //                   .map(time => (
-    //                     <span> {time.dayOfWeek} </span>
-    //                   ))}
-    //               </td>
-    //               <td>{section.meetingTimes[0].startTime}</td>
-    //               <td>{section.meetingTimes[0].endTime}</td>
-    //               <td>
-    //                 <button
-    //                   className='btn btn-primary'
-    //                   onClick={e => {
-    //                     // e.preventDefault();
-    //                     section.professorName =
-    //                       professor.name.firstName +
-    //                       ' ' +
-    //                       professor.name.lastName;
-    //                     selectSection(currentCourseCompare, section);
-    //                   }}
-    //                 >
-    //                   Add to cart
-    //                 </button>
-    //               </td>
-    //             </tr>
-    //           </table>
-    //         </div>
-    //       ))}
-    // </Fragment>
   );
 };
 

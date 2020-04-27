@@ -9,8 +9,6 @@ import Login from './component/auth/Login';
 import Alert from './component/layout/Alert';
 import Courses from './component/courseSelection/Courses';
 import CourseComparison from './component/courseComparison/CourseComparison';
-// import Course from './component/sectionComparison/Course';
-// import Professor from './component/profdetail/ProfessorDetail';
 import Review from './component/addReview/Review';
 import Calendar from './component/calendar/Calendar';
 

@@ -38,13 +38,13 @@ const CourseComparison = ({
       </p>
       <div className='courseCompLayout'>
         <div className='courseComparison'>
-          <h3 className='small text-primary'>Choose Courses</h3>
+          <h3 className='small text-primary'>Selected Courses</h3>
           {selectedCourses.map((course) => (
             <CourseCompItem key={course.id} courseItem={course} />
           ))}
         </div>
         <div>
-          <h3 className='small text-primary'>Choose Sections</h3>
+          <h3 className='small text-primary'>Select Sections</h3>
           <SectionComparison />
         </div>
         <div className='courseComparison'>

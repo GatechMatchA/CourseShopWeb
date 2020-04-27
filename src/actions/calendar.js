@@ -16,10 +16,9 @@ export const categorizeSection = (courses) => async (dispatch) => {
   var Thursday = [];
   var Friday = [];
   for (const course of courses) {
-    if (course.selectedSection !== undefined) {
+    if (course.selectedSection !== undefined && course.selectedSection !== '') {
       const section = course.selectedSection;
       var randNum = Math.floor(Math.random() * 8) + 1; //generate random number for color
-      //   console.log('categorize', section);
       for (const time of section.meetingTimes) {
         if (time.dayOfWeek === 1) {
           section.courseCode = course.code;

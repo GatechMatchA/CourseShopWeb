@@ -421,6 +421,7 @@ event-abs-circuit .cd-schedule .single-event[data-event='event-1']:hover {
 
 .cd-schedule .single-event[data-event='event-5']:hover {
   background: #a28497;
+  opacity: 0.8;
 }
 
 .cd-schedule .single-event[data-event='event-6'],
@@ -430,6 +431,7 @@ event-abs-circuit .cd-schedule .single-event[data-event='event-1']:hover {
 
 .cd-schedule .single-event[data-event='event-6']:hover {
   background: #98c1d9;
+  opacity: 0.8;
 }
 
 .cd-schedule .single-event[data-event='event-7'],
@@ -439,6 +441,7 @@ event-abs-circuit .cd-schedule .single-event[data-event='event-1']:hover {
 
 .cd-schedule .single-event[data-event='event-7']:hover {
   background: #00afb5;
+  opacity: 0.8;
 }
 
 .cd-schedule .single-event[data-event='event-8'],
@@ -448,6 +451,7 @@ event-abs-circuit .cd-schedule .single-event[data-event='event-1']:hover {
 
 .cd-schedule .single-event[data-event='event-8']:hover {
   background: #eabda8;
+  opacity: 0.8;
 }
 
 .cd-schedule .single-event[data-event='event-9'],
@@ -457,6 +461,7 @@ event-abs-circuit .cd-schedule .single-event[data-event='event-1']:hover {
 
 .cd-schedule .single-event[data-event='event-9']:hover {
   background: #bc9ec1;
+  opacity: 0.8;
 }
 
 .cd-schedule .single-event[data-event='event-10'],
@@ -466,6 +471,7 @@ event-abs-circuit .cd-schedule .single-event[data-event='event-1']:hover {
 
 .cd-schedule .single-event[data-event='event-10']:hover {
   background: #ffa69e;
+  opacity: 0.8;
 }
 
 .cd-schedule .event-modal {
