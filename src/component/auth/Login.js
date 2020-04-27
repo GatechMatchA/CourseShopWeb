@@ -7,15 +7,15 @@ import { connect } from 'react-redux';
 const Login = ({ login }) => {
   const [formData, setFormData] = useState({
     username: '',
-    password: ''
+    password: '',
   });
 
   const { username, password } = formData;
-  const onChange = e =>
+  const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   // use axios to send data
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     login({ username, password });
   };
@@ -25,14 +25,14 @@ const Login = ({ login }) => {
       <p className='lead'>
         <i className='fas fa-user'></i> Sign Into Your Account
       </p>
-      <form className='form' onSubmit={e => onSubmit(e)}>
+      <form className='form' onSubmit={(e) => onSubmit(e)}>
         <div className='form-group'>
           <input
             type='text'
             placeholder='Username'
             name='username'
             value={username}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
             required
           />
         </div>
@@ -42,7 +42,7 @@ const Login = ({ login }) => {
             placeholder='Password'
             name='password'
             value={password}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
 

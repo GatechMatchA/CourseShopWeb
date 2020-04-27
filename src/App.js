@@ -12,6 +12,8 @@ import CourseComparison from './component/courseComparison/CourseComparison';
 import Review from './component/addReview/Review';
 import Calendar from './component/calendar/Calendar';
 
+import PrivateRoute from './component/routing/PrivateRoute';
+
 //import Redux surrond the whole app with Provider
 import { Provider } from 'react-redux';
 import store from './store';
@@ -39,7 +41,7 @@ const App = () => (
               path='/courses/:id/professors/:profId'
               component={Professor}
             /> */}
-            <Route exact path='/addreview' component={Review} />
+            <PrivateRoute exact path='/addreview' component={Review} />
             <Route exact path='/calendar' component={Calendar} />
           </Switch>
         </section>
