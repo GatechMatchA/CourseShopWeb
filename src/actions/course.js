@@ -10,34 +10,31 @@ import {
   UNSELECT_SECTION,
   GET_COURSE,
   SET_COMPARE_COURSE,
-  CLEAN_COMPARE_COURSE
+  CLEAN_COMPARE_COURSE,
 } from './types';
 
 import API from './API';
 
 // Get all courses
-export const getCourses = searchText => async dispatch => {
+export const getCourses = (searchText) => async (dispatch) => {
   try {
     const res = await API.get('/api/courses?&orderBy=code');
 
     if (searchText === '') {
       await dispatch({
         type: GET_COURSES,
-        payload: res.data
+        payload: res.data,
       });
     } else {
-      searchText = searchText.toUpperCase();
+      searchText = searchText.toUpperCase().split(' ').join('');
 
-      const courses = res.data.payload.filter(course =>
-        course.code
-          .split(' ')
-          .join('')
-          .includes(searchText.trim())
+      const courses = res.data.payload.filter((course) =>
+        course.code.split(' ').join('').includes(searchText.trim())
       );
 
       await dispatch({
         type: SEARCH_COURSES,
-        payload: courses
+        payload: courses,
       });
     }
   } catch (err) {
@@ -45,62 +42,62 @@ export const getCourses = searchText => async dispatch => {
     console.log(err.response);
     dispatch({
       type: COURSE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
 
 // Search courses using course code
-export const searchCourses = searchText => async dispatch => {
+export const searchCourses = (searchText) => async (dispatch) => {
   try {
     const res = await API.get('/api/courses?&orderBy=code');
     searchText = searchText.toUpperCase();
 
-    const courses = res.data.payload.filter(course =>
+    const courses = res.data.payload.filter((course) =>
       course.code.includes(searchText)
     );
 
     dispatch({
       type: SEARCH_COURSES,
-      payload: courses
+      payload: courses,
     });
   } catch (err) {
     dispatch({
       type: COURSE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
 
 //Select this course
-export const selectCourse = course => async dispatch => {
+export const selectCourse = (course) => async (dispatch) => {
   //   console.log(course);
   dispatch({
     type: CLEAN_COURSE,
-    payload: course
+    payload: course,
   });
   dispatch({
     type: SELECT_COURSE,
-    payload: course
+    payload: course,
   });
 };
 
-export const unselectCourse = course => async dispatch => {
+export const unselectCourse = (course) => async (dispatch) => {
   //   console.log(course);
   dispatch({
     type: UNSELECT_COURSE,
-    payload: course
+    payload: course,
   });
 };
 
 // Get single course
-export const getCourse = courseId => async dispatch => {
+export const getCourse = (courseId) => async (dispatch) => {
   try {
     const res = await API.get(`/api/courses/${courseId}`);
     // console.log(res.data.payload.id);
     dispatch({
       type: GET_COURSE,
-      payload: res.data.payload
+      payload: res.data.payload,
     });
   } catch (err) {
     console.log(err);
@@ -108,41 +105,41 @@ export const getCourse = courseId => async dispatch => {
 
     dispatch({
       type: COURSE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
 
 //Set current selected course
-export const setCourse = course => async dispatch => {
+export const setCourse = (course) => async (dispatch) => {
   dispatch({
     type: SET_COMPARE_COURSE,
-    payload: course
+    payload: course,
   });
 };
 
 //Select this section
-export const selectSection = (course, section) => async dispatch => {
+export const selectSection = (course, section) => async (dispatch) => {
   course.selectedSection = section;
   dispatch({
     type: SELECT_SECTION,
-    payload: course
+    payload: course,
   });
 };
 
 //Unselect this section
-export const unselectSection = (course, section) => async dispatch => {
+export const unselectSection = (course, section) => async (dispatch) => {
   course.selectedSection = '';
   dispatch({
     type: UNSELECT_SECTION,
-    payload: course
+    payload: course,
   });
 };
 
 //Clear current course for compare
-export const clearCourseCompare = () => async dispatch => {
+export const clearCourseCompare = () => async (dispatch) => {
   dispatch({
     type: CLEAN_COMPARE_COURSE,
-    payload: null
+    payload: null,
   });
 };
